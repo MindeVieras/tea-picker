@@ -41,7 +41,7 @@ class MemberList extends Component {
     })
     const { dispatch } = this.props
 
-    dispatch(roundActions.addToParticipants(id, this.state.participantCount))
+    dispatch(roundActions.addMember(id, this.state.participantCount))
   }
 
   /**   

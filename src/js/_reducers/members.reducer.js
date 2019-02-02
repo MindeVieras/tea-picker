@@ -1,5 +1,5 @@
 
-import { memberConstants } from 'Constants'
+import { memberConstants, roundConstants } from 'Constants'
 
 const initialState = {
   selected_user: {
@@ -84,7 +84,7 @@ export function members(state = initialState, action) {
       }
     }
 
-  case memberConstants.ADD_TO_PARTICIPANTS:
+  case roundConstants.ADD_MEMBER:
     return {
       ...state,
       list: {
@@ -98,7 +98,7 @@ export function members(state = initialState, action) {
       }
     }
 
-  case memberConstants.REMOVE_FROM_PARTICIPANTS:
+  case roundConstants.REMOVE_MEMBER:
     return {
       ...state,
       list: {
@@ -114,7 +114,7 @@ export function members(state = initialState, action) {
       }
     }
     
-  case memberConstants.REMOVE_ALL_PARTICIPANTS:
+  case roundConstants.REMOVE_ALL_MEMBERS:
     return {
       ...state,
       list: {

@@ -19,18 +19,16 @@ class Round extends Component {
 
   removeFromParticipants(id) {
     const { dispatch } = this.props
-    dispatch(roundActions.removeFromParticipants(id))
+    dispatch(roundActions.removeMember(id))
   }
 
   pickTeaMaker(participants) {
-    console.log(participants)
 
     const { dispatch } = this.props
     const names = participants.map(p => {
       return p.name
     })
     dispatch(roundActions.pickMaker(names))
-    // dispatch(roundActions.removeAllParticipants())
   }
 
   /**   
@@ -43,7 +41,7 @@ class Round extends Component {
     const { participants } = this.props
     
     return (
-      <div id="picker_wrapper">
+      <div id="round_wrapper">
         <header className="d-flex justify-content-between align-items-center mb-3">
           <h4 className="mb-0">Participants</h4>
           <Button

@@ -1,12 +1,10 @@
 
-import { memberConstants, roundConstants } from 'Constants'
+import { roundConstants } from 'Constants'
 import { roundService } from 'Services'
 
 export const roundActions = {
-  pickMaker,
-  addToParticipants,
-  removeFromParticipants,
-  removeAllParticipants
+  pickMaker, addMember,
+  removeMember, removeAllMembers
 }
 
 function pickMaker(participants) {
@@ -16,7 +14,10 @@ function pickMaker(participants) {
     roundService.pickMaker({ participants })
       .then(res => {
         console.log(res)
+        // dispatch(success(maker))
+        dispatch(clearRound())
         // if (res.ack == 'ok') {
+        //   dispatch(success(maker))
         //   dispatch(success(maker))
         // } else {
         //   dispatch(failure(id, res.msg))
@@ -27,29 +28,30 @@ function pickMaker(participants) {
 
   function request() { return { type: roundConstants.GET_MAKER_REQUEST } }
   function success(name) { return { type: roundConstants.GET_MAKER_SUCCESS, name } }
+  function clearRound() { return { type: roundConstants.REMOVE_ALL_MEMBERS } }
   function failure(error) { return { type: roundConstants.GET_MAKER_FAILURE, error } }
 }
 
-function addToParticipants(id, index = 0) {
+function addMember(id, index = 0) {
   return dispatch => {
     dispatch(add(id, index))
   }
 
-  function add(id, index) { return { type: memberConstants.ADD_TO_PARTICIPANTS, id, index } }
+  function add(id, index) { return { type: roundConstants.ADD_MEMBER, id, index } }
 }
 
-function removeFromParticipants(id) {
+function removeMember(id) {
   return dispatch => {
     dispatch(remove(id))
   }
 
-  function remove(id) { return { type: memberConstants.REMOVE_FROM_PARTICIPANTS, id } }
+  function remove(id) { return { type: roundConstants.REMOVE_MEMBER, id } }
 }
 
-function removeAllParticipants() {
+function removeAllMembers() {
   return dispatch => {
     dispatch(remove())
   }
 
-  function remove() { return { type: memberConstants.REMOVE_ALL_PARTICIPANTS } }
+  function remove() { return { type: roundConstants.REMOVE_ALL_MEMBERS } }
 }
