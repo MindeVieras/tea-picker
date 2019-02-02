@@ -42,16 +42,14 @@ function _delete(id) {
 
     memberService.delete(id)
       .then(res => {
-        if (res.ack == 'ok') {
+        if (res.status === 200)
           dispatch(success(id))
-        } else {
-          dispatch(failure(id, res.msg))
-          toastr.error('Error', res.msg, { timeOut: 3000 })
-        }
+        else
+          dispatch(failure(id, res.message))
       })
   }
 
   function request(id) { return { type: memberConstants.DELETE_REQUEST, id } }
   function success(id) { return { type: memberConstants.DELETE_SUCCESS, id } }
-  function failure(id, err) { return { type: memberConstants.DELETE_FAILURE, id, err } }
+  function failure(id, error) { return { type: memberConstants.DELETE_FAILURE, id, error } }
 }

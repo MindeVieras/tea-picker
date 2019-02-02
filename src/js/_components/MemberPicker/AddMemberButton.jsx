@@ -6,7 +6,7 @@ import { Button } from 'reactstrap'
 import { FaPlus } from 'react-icons/fa'
 
 import Modal from 'Partials'
-import MemberForm from './MemberForm'
+import { MemberForm } from './MemberForm'
 
 import { uiConstants } from 'Constants'
 import { uiActions } from 'Actions'

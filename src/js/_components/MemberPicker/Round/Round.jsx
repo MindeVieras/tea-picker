@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ListGroup, ListGroupItem, Button } from 'reactstrap'
+import { ListGroup, ListGroupItem, Alert, Button } from 'reactstrap'
 import { FaTimes } from 'react-icons/fa'
 
 import { roundActions, uiActions } from 'Actions'
@@ -48,32 +48,39 @@ class Round extends Component {
           <h4 className="mb-0">Round participants</h4>
           <Button
             color="success"
-            disabled={ participants.length < 1 }
+            disabled={ participants.length === 0 }
             onClick={ () => this.pickTeaMaker(participants) }
           >
             Pick Tea Maker
           </Button>
         </header>
-        <ListGroup>
-          {participants.map(p =>
-            <ListGroupItem
-              className="d-flex justify-content-between align-items-center"
-              key={ p._id }
-            >
-              <span
-                className="mr-3"
-                onClick={ this.onMemberEditClick }
+        {participants.length > 0 &&
+          <ListGroup>
+            {participants.map(p =>
+              <ListGroupItem
+                className="d-flex justify-content-between align-items-center"
+                key={ p._id }
               >
-                { p.name }
-              </span>
-              <Button
-                onClick={ () => this.removeFromParticipants(p._id) }
-                color="info"
-                size="sm"
-              ><FaTimes /></Button>
-            </ListGroupItem>
-          )}
-        </ListGroup>
+                <span
+                  className="mr-3"
+                  onClick={ this.onMemberEditClick }
+                >
+                  { p.name }
+                </span>
+                <Button
+                  onClick={ () => this.removeFromParticipants(p._id) }
+                  color="info"
+                  size="sm"
+                ><FaTimes /></Button>
+              </ListGroupItem>
+            )}
+          </ListGroup>
+        }
+        {participants.length === 0 &&
+          <Alert color="info">
+            Add participants from the list on the left.
+          </Alert>
+        }
       </div>
     )
   }

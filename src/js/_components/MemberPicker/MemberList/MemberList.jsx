@@ -2,15 +2,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ListGroup, ListGroupItem, Button } from 'reactstrap'
+import { ListGroup, ListGroupItem, Alert, Button } from 'reactstrap'
 import { FaAngleRight } from 'react-icons/fa'
 
-import { uiActions, roundActions } from 'Actions'
+import { uiActions, memberActions, roundActions } from 'Actions'
 import { uiConstants } from 'Constants'
 import AddMemberButton from '../AddMemberButton'
 
 import Modal from 'Partials'
-import MemberForm from '../MemberForm'
+import { MemberEditForm } from '../MemberForm'
 
 class MemberList extends Component {
 
@@ -31,8 +31,9 @@ class MemberList extends Component {
   }
 
   onMemberDeleteClick(id) {
-    console.log(id)
-    this.props.dispatch(uiActions.modalClose(uiConstants.MODAL_MEMBER_EDIT))
+    const { dispatch } = this.props
+    dispatch(memberActions.delete(id))
+    dispatch(uiActions.modalClose(uiConstants.MODAL_MEMBER_EDIT))
   }
 
   addToParticipants(id) {
@@ -53,34 +54,40 @@ class MemberList extends Component {
     
     const { members } = this.props
     const { selectedMember } = this.state
-    
     return (
       <div id="sidebar_wrapper">
         <header className="mb-3 d-flex align-items-center">
           <h5 className="mb-0 mr-3">Members</h5>
           <AddMemberButton />
         </header>
-        <ListGroup id="members_list">
-          {members.map(m =>
-            <ListGroupItem
-              className="d-flex justify-content-between align-items-center"
-              key={ m._id }
-            >
-              <span
-                className="member-name mr-3"
-                onClick={ () => this.onMemberEditClick(m) }
+        {members.length > 0 &&
+          <ListGroup id="members_list">
+            {members.map(m =>
+              <ListGroupItem
+                className="d-flex justify-content-between align-items-center"
+                key={ m._id }
               >
-                { m.name }
-              </span>
-              <Button
-                onClick={ () => this.addToParticipants(m._id) }
-                color="info"
-                size="sm"
-                title="Add member to participants"
-              ><FaAngleRight /></Button>
-            </ListGroupItem>
-          )}
-        </ListGroup>
+                <span
+                  className="member-name mr-3"
+                  onClick={ () => this.onMemberEditClick(m) }
+                >
+                  { m.name }
+                </span>
+                <Button
+                  onClick={ () => this.addToParticipants(m._id) }
+                  color="info"
+                  size="sm"
+                  title="Add member to participants"
+                ><FaAngleRight /></Button>
+              </ListGroupItem>
+            )}
+          </ListGroup>
+        }
+        {members.length === 0 &&
+          <Alert color="info">
+            No members.
+          </Alert>
+        }
         {selectedMember &&
           <Modal
             modalId={ uiConstants.MODAL_MEMBER_EDIT }
@@ -91,7 +98,7 @@ class MemberList extends Component {
               <Button color="primary" form="member_edit_form">Save</Button>
             ]}
           >
-            <MemberForm />
+            <MemberEditForm member={ selectedMember } />
           </Modal>
         }
       </div>

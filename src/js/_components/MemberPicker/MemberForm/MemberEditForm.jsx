@@ -11,11 +11,18 @@ import { memberActions } from 'Actions'
 import { renderText } from 'Partials'
 import submit from './submit'
 
-class MemberForm extends Component {
+class MemberEditForm extends Component {
 
   constructor(props) {
     super(props)
 
+  }
+
+  componentDidMount () {
+
+    // Set initial form values
+    const { initialize, member: { name, email } } = this.props
+    initialize({ name, email })
   }
 
   /**   
@@ -28,7 +35,7 @@ class MemberForm extends Component {
     const { handleSubmit } = this.props
 
     return (
-      <Form id="member_form" onSubmit={ handleSubmit(submit) }>
+      <Form id="member_edit_form" onSubmit={ handleSubmit(submit) }>
         <Field
           name="name"
           component={ renderText }
@@ -45,25 +52,24 @@ class MemberForm extends Component {
   }
 }
 
-MemberForm.propTypes = {
+MemberEditForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  initialize: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
-  submitting: PropTypes.bool
+  submitting: PropTypes.bool,
+  member: PropTypes.object
 }
 
-MemberForm.defaultProps = {
+MemberEditForm.defaultProps = {
   error: null,
-  submitting: false
+  submitting: false,
+  member: null
 }
 
-MemberForm = connect()(MemberForm)
+MemberEditForm = connect()(MemberEditForm)
 
 export default reduxForm({
-  form: 'member_form',
-  initialValues: {
-    name: '',
-    email: ''
-  },
+  form: 'member_edit_form'
   // validate
-})(MemberForm)
+})(MemberEditForm)
