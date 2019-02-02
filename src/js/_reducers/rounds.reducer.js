@@ -2,7 +2,7 @@
 import { roundConstants } from 'Constants'
 
 const initialState = {
-  items: null
+  items: []
 }
 
 export function rounds(state = initialState, action) {
