@@ -48,7 +48,6 @@ class Rounds extends Component {
 
     const { rounds: { loading, items, error } } = this.props
 
-    console.log(items)
     return (
       <Container>
         
