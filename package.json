@@ -1,0 +1,54 @@
+{
+  "name": "tea-picker-app",
+  "version": "1.0.1",
+  "description": "Tea picker app",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack/webpack.dev.js",
+    "build": "webpack --config webpack/webpack.build.js --progress",
+    "clean": "rimraf dist",
+    "test": "eslint src/js"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": "10.13.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "classnames": "^2.2.6",
+    "history": "^4.7.2",
+    "moment": "^2.22.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-icons": "^3.3.0",
+    "react-redux": "^5.1.1",
+    "react-redux-toastr": "^7.4.1",
+    "react-router-dom": "^4.3.1",
+    "reactstrap": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-form": "^8.1.0",
+    "redux-thunk": "^2.3.0",
+    "validator": "^10.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.9.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.10.0",
+    "redux-devtools-extension": "^2.13.5",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.1.0",
+    "string-replace-loader": "^2.1.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
