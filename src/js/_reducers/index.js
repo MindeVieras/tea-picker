@@ -4,13 +4,15 @@ import { reducer as formReducer } from 'redux-form'
 import { reducer as toastrReducer } from 'react-redux-toastr'
 
 import { ui } from './ui.reducer'
-import { member } from './member.reducer'
+import { members } from './members.reducer'
 import { maker } from './maker.reducer'
+import { rounds } from './rounds.reducer'
 
 const rootReducer = combineReducers({
   ui,
-  member,
+  members,
   maker,
+  rounds,
   form: formReducer,
   toastr: toastrReducer
 })

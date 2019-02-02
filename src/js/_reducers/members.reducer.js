@@ -7,7 +7,7 @@ const initialState = {
   error: null
 }
 
-export function member(state = initialState, action) {
+export function members(state = initialState, action) {
   switch (action.type) {
 
   case memberConstants.GETLIST_REQUEST:

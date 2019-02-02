@@ -9,7 +9,7 @@ import Modal from 'Partials'
 import MemberList from './MemberList'
 import Round from './Round'
 import { uiConstants } from 'Constants'
-import { roundActions,uiActions } from 'Actions'
+import { roundActions, uiActions } from 'Actions'
 
 class MemberPicker extends Component {
 
@@ -98,8 +98,8 @@ MemberPicker.defaultProps = {
 }
 
 function mapStateToProps(state) {
-  const { member, maker } = state
-  return { members: member, maker }
+  const { members, maker } = state
+  return { members, maker }
 }
 
 export default connect(mapStateToProps)(MemberPicker)
