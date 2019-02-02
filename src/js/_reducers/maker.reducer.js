@@ -3,7 +3,6 @@ import { roundConstants } from 'Constants'
 
 const initialState = {
   loading: false,
-  name: null,
   error: null
 }
 
@@ -15,9 +14,7 @@ export function maker(state = initialState, action) {
       loading: true
     }
   case roundConstants.GET_MAKER_SUCCESS:
-    return {
-      name: action.name
-    }
+    return action.round
   case roundConstants.GET_MAKER_FAILURE:
     return {
       error: action.error

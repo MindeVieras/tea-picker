@@ -13,21 +13,18 @@ function pickMaker(participants) {
 
     roundService.pickMaker({ participants })
       .then(res => {
-        console.log(res)
-        // dispatch(success(maker))
-        dispatch(clearRound())
-        // if (res.ack == 'ok') {
-        //   dispatch(success(maker))
-        //   dispatch(success(maker))
-        // } else {
-        //   dispatch(failure(id, res.msg))
-        //   toastr.error('Error', res.msg, { timeOut: 3000 })
-        // }
+        if (res.status === 200) {
+          dispatch(success(res.data))
+          dispatch(clearRound())
+        }
+        else
+          dispatch(failure(res.message))
+
       })
   }
 
   function request() { return { type: roundConstants.GET_MAKER_REQUEST } }
-  function success(name) { return { type: roundConstants.GET_MAKER_SUCCESS, name } }
+  function success(round) { return { type: roundConstants.GET_MAKER_SUCCESS, round } }
   function clearRound() { return { type: roundConstants.REMOVE_ALL_MEMBERS } }
   function failure(error) { return { type: roundConstants.GET_MAKER_FAILURE, error } }
 }
