@@ -15,15 +15,19 @@ class Modal extends Component {
   }
 
   handleClose() {
-    const { modalId, dispatch } = this.props
-    dispatch(uiActions.modalClose(modalId))
+    const { modalId, dispatch, onClose } = this.props
+    
+    if (typeof onClose === 'function')
+      onClose()
+    else
+      dispatch(uiActions.modalClose(modalId))
   }
 
   render() {
 
     const {
       children, modalId, modals,
-      title, size, buttons
+      title, size, buttons, cancelButton
     } = this.props
 
     let isOpen = false
@@ -44,7 +48,7 @@ class Modal extends Component {
         </ModalBody>
         <ModalFooter>
           {buttons.map((b, i) => <Fragment key={ i }>{ b }</Fragment> )}
-          <Button color="secondary" onClick={ this.handleClose }>Cancel</Button>
+          {cancelButton && <Button color="secondary" onClick={ this.handleClose }>Cancel</Button>}
         </ModalFooter>
       </BsModal>
     )
@@ -56,15 +60,19 @@ Modal.propTypes = {
   children: PropTypes.node.isRequired,
   modalId: PropTypes.string.isRequired,
   modals: PropTypes.object.isRequired,
+  onClose: PropTypes.func,
   title: PropTypes.string,
   size: PropTypes.string,
-  buttons: PropTypes.array
+  buttons: PropTypes.array,
+  cancelButton: PropTypes.bool
 }
 
 Modal.defaultProps = {
+  onClose: null,
   title: null,
   size: 'sm',
-  buttons: []
+  buttons: [],
+  cancelButton: true
 }
 
 function mapStateToProps(state) {

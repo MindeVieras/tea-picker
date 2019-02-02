@@ -19,6 +19,9 @@ export function maker(state = initialState, action) {
     return {
       error: action.error
     }
+
+  case roundConstants.CLEAR_MAKER:
+    return initialState
       
   default:
     return state

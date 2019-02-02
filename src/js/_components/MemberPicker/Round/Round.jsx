@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import { ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { FaTimes } from 'react-icons/fa'
 
-import { roundActions } from 'Actions'
+import { roundActions, uiActions } from 'Actions'
+import { uiConstants } from 'Constants'
 
 class Round extends Component {
 
@@ -29,6 +30,7 @@ class Round extends Component {
       return p.name
     })
     dispatch(roundActions.pickMaker(names))
+    dispatch(uiActions.modalOpen(uiConstants.MODAL_TEA_MAKER))
   }
 
   /**   
@@ -39,11 +41,11 @@ class Round extends Component {
   render() {
 
     const { participants } = this.props
-    
+
     return (
       <div id="round_wrapper">
         <header className="d-flex justify-content-between align-items-center mb-3">
-          <h4 className="mb-0">Participants</h4>
+          <h4 className="mb-0">Round participants</h4>
           <Button
             color="success"
             disabled={ participants.length < 1 }
