@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import { Row, Col, Alert, Spinner, Button } from 'reactstrap'
 
-import Modal from 'Partials'
+import { Modal } from 'Partials'
 import MemberList from './MemberList'
 import Round from './Round'
 import { uiConstants } from 'Constants'

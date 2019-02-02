@@ -1,21 +1,36 @@
 
-// #root {
-//   overflow: hidden;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-// }
+#root {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
 
-// #main-wrapper {
-//   position: absolute;
-//   top: 56px;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   overflow: auto;
-// }
+#main-wrapper {
+  position: relative;
+  flex: 1;
+  margin-top: 56px;
+}
+
+.spinner-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  &.inline {
+    cursor: progress;
+    background-color: rgba(0,0,0,.5);
+  }
+}
 
 .btn svg {
   margin-bottom: 2px;

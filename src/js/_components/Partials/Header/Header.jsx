@@ -42,7 +42,7 @@ class Header extends Component {
    */
   render() {
     return (
-      <Navbar color="light" light expand="sm">
+      <Navbar color="light" light expand="sm" fixed="top" className="shadow-sm">
         <NavbarBrand tag={ RouterNavLink } exact to="/">Tea Round Picker</NavbarBrand>
         <NavbarToggler onClick={ this.toggle } />
         <Collapse isOpen={ this.state.isOpen } navbar>

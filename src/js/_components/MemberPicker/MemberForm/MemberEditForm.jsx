@@ -3,10 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { Button, Form } from 'reactstrap'
-import { FaAngleRight } from 'react-icons/fa'
-
-import { memberActions } from 'Actions'
+import { Form } from 'reactstrap'
 
 import { renderText } from 'Partials'
 import submit from './submit'

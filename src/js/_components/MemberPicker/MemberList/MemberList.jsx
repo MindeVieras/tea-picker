@@ -9,7 +9,7 @@ import { uiActions, memberActions, roundActions } from 'Actions'
 import { uiConstants } from 'Constants'
 import AddMemberButton from '../AddMemberButton'
 
-import Modal from 'Partials'
+import { Modal } from 'Partials'
 import { MemberEditForm } from '../MemberForm'
 
 class MemberList extends Component {
