@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.dev.js",
-    "build": "webpack --config webpack/webpack.build.js --progress",
+    "build": "npm run clean && webpack --config webpack/webpack.build.js --progress",
+    "deploy": "webpack --config webpack/webpack.deploy.js --progress",
     "clean": "rimraf dist",
     "test": "eslint src/js"
   },
@@ -49,6 +50,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-s3-plugin": "^1.0.3"
   }
 }
