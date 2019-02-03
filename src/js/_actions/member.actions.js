@@ -5,7 +5,8 @@ import { memberConstants } from 'Constants'
 import { memberService } from 'Services'
 
 export const memberActions = {
-  getList, create,
+  getList,
+  create, update,
   delete: _delete
 }
 
@@ -29,10 +30,18 @@ function getList() {
 
 function create(member) {
   return dispatch => {
-    dispatch(success(member))
+    dispatch(create(member))
   }
 
-  function success(member) { return { type: memberConstants.CREATE, member } }
+  function create(member) { return { type: memberConstants.CREATE, member } }
+}
+
+function update(member) {
+  return dispatch => {
+    dispatch(update(member))
+  }
+
+  function update(member) { return { type: memberConstants.UPDATE, member } }
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
