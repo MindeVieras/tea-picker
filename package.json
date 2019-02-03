@@ -8,7 +8,8 @@
     "build": "npm run clean && webpack --config webpack/webpack.build.js --progress",
     "deploy": "webpack --config webpack/webpack.deploy.js --progress",
     "clean": "rimraf dist",
-    "test": "eslint src/js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/js"
   },
   "license": "ISC",
   "engines": {

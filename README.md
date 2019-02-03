@@ -1,22 +1,28 @@
 
+# The Tea Round Picker APP
+
+Project is build using ReactJS and Redux. It's a front-end APP that communicates with [tea-picker-api](https://github.com/MindeVieras/tea-picker-api). User is able to manage members, pick random tea maker from a participants list and see all round history.
+
 ## Getting Started
 
-To get started, first install all the necessary dependencies.
+### Installation
+
+Clone the repo:
 ```
-> npm install
+git clone git@github.com:MindeVieras/tea-picker.git
 ```
 
-Run an initial webpack build
+Install dependencies:
 ```
-> npm run build
-```
-
-Start the development server (changes will now update live in browser)
-```
-> npm start
+npm install
 ```
 
-Deploy to S3 bucket (rename s3-deploy-config.sample.json to s3-deploy-config.json and edit)
+### Start Server
 ```
-> npm run deploy
+npm start
+```
+
+### Linting
+```
+npm run lint
 ```
