@@ -5,22 +5,16 @@ import { memberActions, uiActions } from 'Actions'
 import { memberService } from 'Services'
 import { uiConstants } from 'Constants'
 
-function submit(values, dispatch, form) {
+function submit(values, dispatch) {
 
   return memberService.create(values)
     .then(res => {
       const { status, data, errors } = res
       
       // Response success
-      if (status > 200 && status < 300) {
-        
-        const formId = form.form
+      if (status >= 200 && status < 300) {
 
-        if (formId === 'member_form')
-          dispatch(memberActions.create(data))
-        else if (formId === 'member_edit_form')
-          dispatch(memberActions.update(data))
-        
+        dispatch(memberActions.create(data))
           // close member create modal
         dispatch(uiActions.modalClose(uiConstants.MODAL_MEMBER_CREATE))
 

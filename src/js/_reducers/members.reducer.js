@@ -28,6 +28,17 @@ export function members(state = initialState, action) {
       items: [ action.member, ...state.items ]
     }
 
+  case memberConstants.UPDATE:
+    return {
+      items: state.items.map(m => {
+        if (m._id === action.member._id) {
+          const { ...mCopy } = m
+          return { ...mCopy, ...action.member }
+        }
+        return m
+      })
+    }
+    
   case memberConstants.DELETE_REQUEST:
     return {
       items: state.items.map(m => m._id === action.id ? { ...m, deleting: true } : m)

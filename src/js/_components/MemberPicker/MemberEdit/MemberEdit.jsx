@@ -8,7 +8,7 @@ import { Form } from 'reactstrap'
 import { renderText } from 'Partials'
 import submit from './submit'
 
-class MemberEditForm extends Component {
+class MemberEdit extends Component {
 
   constructor(props) {
     super(props)
@@ -49,7 +49,7 @@ class MemberEditForm extends Component {
   }
 }
 
-MemberEditForm.propTypes = {
+MemberEdit.propTypes = {
   dispatch: PropTypes.func.isRequired,
   initialize: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -58,15 +58,15 @@ MemberEditForm.propTypes = {
   member: PropTypes.object
 }
 
-MemberEditForm.defaultProps = {
+MemberEdit.defaultProps = {
   error: null,
   submitting: false,
   member: null
 }
 
-MemberEditForm = connect()(MemberEditForm)
+MemberEdit = connect()(MemberEdit)
 
 export default reduxForm({
   form: 'member_edit_form'
   // validate
-})(MemberEditForm)
+})(MemberEdit)

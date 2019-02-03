@@ -10,7 +10,7 @@ import { uiConstants } from 'Constants'
 import AddMemberButton from '../AddMemberButton'
 
 import { Modal } from 'Partials'
-import { MemberEditForm } from '../MemberForm'
+import { MemberEdit } from '../MemberEdit'
 
 class MemberList extends Component {
 
@@ -27,7 +27,8 @@ class MemberList extends Component {
     this.setState({
       selectedMember: member
     })
-    this.props.dispatch(uiActions.modalOpen(uiConstants.MODAL_MEMBER_EDIT))
+    const { dispatch } = this.props
+    dispatch(uiActions.modalOpen(uiConstants.MODAL_MEMBER_EDIT))
   }
 
   onMemberDeleteClick(id) {
@@ -98,7 +99,7 @@ class MemberList extends Component {
               <Button color="primary" form="member_edit_form">Save</Button>
             ]}
           >
-            <MemberEditForm member={ selectedMember } />
+            <MemberEdit member={ selectedMember } />
           </Modal>
         }
       </div>

@@ -8,7 +8,7 @@ import { Form } from 'reactstrap'
 import { renderText } from 'Partials'
 import submit from './submit'
 
-class MemberForm extends Component {
+class MemberCreate extends Component {
 
   constructor(props) {
     super(props)
@@ -42,19 +42,19 @@ class MemberForm extends Component {
   }
 }
 
-MemberForm.propTypes = {
+MemberCreate.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
   submitting: PropTypes.bool
 }
 
-MemberForm.defaultProps = {
+MemberCreate.defaultProps = {
   error: null,
   submitting: false
 }
 
-MemberForm = connect()(MemberForm)
+MemberCreate = connect()(MemberCreate)
 
 export default reduxForm({
   form: 'member_form',
@@ -63,4 +63,4 @@ export default reduxForm({
     email: ''
   },
   // validate
-})(MemberForm)
+})(MemberCreate)

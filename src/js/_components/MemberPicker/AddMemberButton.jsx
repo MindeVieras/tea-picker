@@ -6,7 +6,7 @@ import { Button } from 'reactstrap'
 import { FaPlus } from 'react-icons/fa'
 
 import { Modal } from 'Partials'
-import { MemberForm } from './MemberForm'
+import { MemberCreate } from './MemberCreate'
 
 import { uiConstants } from 'Constants'
 import { uiActions } from 'Actions'
@@ -46,7 +46,7 @@ class AddMemberButton extends Component {
           size="sm"
           buttons={[<Button color="primary" form="member_form">Save</Button>]}
         >
-          <MemberForm />
+          <MemberCreate />
         </Modal>
 
       </Fragment>
