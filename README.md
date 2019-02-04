@@ -21,8 +21,14 @@ npm install
 ```
 npm start
 ```
+Once its running can be accessed:
+```
+http://localhost:8080
+```
 
 ### Linting
 ```
 npm run lint
 ```
+
+### More documentation comming soon...
