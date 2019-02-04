@@ -2,21 +2,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ListGroup, ListGroupItem, Alert, Button } from 'reactstrap'
+import { Badge, Alert, Button } from 'reactstrap'
 import { FaTimes } from 'react-icons/fa'
 
 import { roundActions, uiActions } from 'Actions'
 import { uiConstants } from 'Constants'
 
 class Round extends Component {
-
-  constructor(props) {
-    super(props)
-  }
-
-  onMemberEditClick(member) {
-    console.log(member)
-  }
 
   removeFromParticipants(id) {
     const { dispatch } = this.props
@@ -55,26 +47,24 @@ class Round extends Component {
           </Button>
         </header>
         {participants.length > 0 &&
-          <ListGroup>
+          <div>
             {participants.map(p =>
-              <ListGroupItem
-                className="d-flex justify-content-between align-items-center"
+              <Badge
+                color="info"
+                className="mb-3 mr-3 p-2"
                 key={ p._id }
               >
-                <span
-                  className="mr-3"
-                  onClick={ this.onMemberEditClick }
-                >
+                <span className="ml-2 mr-2">
                   { p.name }
                 </span>
                 <Button
                   onClick={ () => this.removeFromParticipants(p._id) }
-                  color="info"
                   size="sm"
+                  color="info"
                 ><FaTimes /></Button>
-              </ListGroupItem>
+              </Badge>
             )}
-          </ListGroup>
+          </div>
         }
         {participants.length === 0 &&
           <Alert color="info">

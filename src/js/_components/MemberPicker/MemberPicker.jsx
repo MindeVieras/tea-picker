@@ -13,6 +13,10 @@ import { roundActions, uiActions } from 'Actions'
 
 class MemberPicker extends Component {
 
+  /**
+   * MemberPicker constructor
+   * @param {Object} props props to pass
+   */
   constructor(props) {
     super(props)
 
@@ -49,7 +53,7 @@ class MemberPicker extends Component {
         }
         {items &&
           <Row>
-            <Col sm="4">
+            <Col sm="5" md="4" xl="3">
               <MemberList members={ memberListItems } />
             </Col>
             <Col>

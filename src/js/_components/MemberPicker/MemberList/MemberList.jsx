@@ -56,7 +56,7 @@ class MemberList extends Component {
     const { members } = this.props
     const { selectedMember } = this.state
     return (
-      <div id="sidebar_wrapper">
+      <div id="sidebar_wrapper" className="mb-3">
         <header className="mb-3 d-flex align-items-center">
           <h5 className="mb-0 mr-3">Members</h5>
           <AddMemberButton />

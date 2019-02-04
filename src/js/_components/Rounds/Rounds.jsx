@@ -17,15 +17,6 @@ import { roundActions } from 'Actions'
  */
 class Rounds extends Component {
 
-  /**
-   * statistics constructor
-   * @param {Object} props props to pass
-   */
-  constructor(props) {
-    super(props)
-
-  }
-
   componentDidMount(){
     const { dispatch, rounds: { items } } = this.props
     
